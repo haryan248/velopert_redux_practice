@@ -4,9 +4,29 @@ import "./index.css";
 import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
 
+import { createStore } from "redux";
+import reducers from "./reducers";
+
+import { Provider } from "react-redux";
+
+const store = createStore(reducers);
+
+// import * as actions from "./actions";
+// const unsubscribe = store.subscribe(() => console.log(store.getState()));
+// store.dispatch(actions.increment());
+// store.dispatch(actions.increment());
+// store.dispatch(actions.decrement());
+// store.dispatch(actions.setColor([200, 200, 200]));
+
+// unsubscribe();
+// // unsubscribe 했으므로 실행되지 않음
+// store.dispatch(actions.setColor([210, 210, 210]));
+
 ReactDOM.render(
     <React.StrictMode>
-        <App />
+        <Provider store={store}>
+            <App />
+        </Provider>
     </React.StrictMode>,
     document.getElementById("root")
 );
